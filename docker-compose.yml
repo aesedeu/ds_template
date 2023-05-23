@@ -1,18 +1,23 @@
 version: "3"
 services:
-  eugene_jupyter:
-    build: ./docker/jupyter/
-    volumes:
-      - .:/home/jovyan/work
-    ports:
-      - 8888:8888
-  eugene_postgres:
+  ds_project:
+    container_name: postgre_container
     build: ./docker/postgres
+    image: postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
+      - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
     ports:
       - 5432:5432
+  jupyer_notebook:
+    container_name: jupyter_container
+    build: ./docker/jupyter/
+    image: jupyter_notebook_datascience
+    volumes:
+      - .:/home/jovyan/work
+    ports:
+      - 8888:8888    
 volumes:
   postgres_data:
