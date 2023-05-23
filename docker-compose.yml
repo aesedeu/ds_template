@@ -1,12 +1,12 @@
 version: "3"
 services:
-  this_jupyter:
+  eugene_jupyter:
     build: ./docker/jupyter/
     volumes:
       - .:/home/jovyan/work
     ports:
       - 8888:8888
-  this_postgres:
+  eugene_postgres:
     build: ./docker/postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
