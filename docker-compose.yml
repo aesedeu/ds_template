@@ -1,7 +1,7 @@
 version: "3"
 services:
   ds_project:
-    container_name: postgre_container
+    container_name: postgres_container
     build: ./docker/postgres
     image: postgres
     volumes:
@@ -14,7 +14,7 @@ services:
   jupyer_notebook:
     container_name: jupyter_container
     build: ./docker/jupyter/
-    image: jupyter_notebook_datascience
+    image: jupyter/datascience-notebook
     volumes:
       - .:/home/jovyan/work
     ports:
